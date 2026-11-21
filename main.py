@@ -17,7 +17,9 @@ and walked: one road, twice chosen, wholly ours.
 def main() -> None:
     out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR") or "/output")
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "entry.txt").write_bytes(POEM.encode("utf-8"))
+    data = POEM.encode("utf-8")
+    assert 1 <= len(POEM) <= 280 and POEM.strip()
+    (out_dir / "entry.txt").write_bytes(data)
 
 
 if __name__ == "__main__":
